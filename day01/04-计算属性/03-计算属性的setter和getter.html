@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script src="js/vue.js"></script>
+
+
+  <div id="app">
+    <h2>{{fullName}}</h2>
+  </div>
+  <script>
+
+
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: '你好啊',
+        firstName: 'Lebron',
+        lastName: 'James'
+      },
+      computed: {//计算属性 看似是函数，实则当成属性使用
+        // fullName: function () {
+        //   return this.firstName + ' ' + this.lastName
+        // }
+
+        fullName: {//computed里面是一个对象，有个fullName属性 而这个属性也是一个对象，里面有set get方法
+          // set:function(){
+          //属性一般不设置set方法，只读属性
+          // },
+          get: function () {
+            return this.firstName + ' ' + this.lastName
+          }
+        }
+      }//相同的功能也可以用方法实现，但在多次调用时 计算属性只会执行一次，而方法会多次，所以方法的性能差
+    });
+
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,12 @@
+View层
+    视图层
+    在前端开发中，通常就是DOM层
+    主要作用是给用户展示各种信息
+Model层
+    数据层
+    数据可以是写死的数据，一般是从服务器请求得到的数据
+Vue-Model层
+    视图模型层
+    是View层和Model层沟通的桥梁
+    一方面实现了Data Binding也就是数据绑定，将Model的改变实时反应到View中
+    另一方面实现了DOM Listener,也就是DOM监听

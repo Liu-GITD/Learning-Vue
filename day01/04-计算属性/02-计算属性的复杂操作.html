@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script src="js/vue.js"></script>
+
+
+  <div id="app">
+    <h2>总价格：{{totalPrice}}</h2>
+    <h2>相同的功能也可以用方法实现，但在多次调用时 计算属性只会执行一次，而方法会多次，所以方法的性能差</h2>
+  </div>
+  <script>
+
+
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: '你好啊',
+        books:[
+          {id:110,name:'Java',price:100},
+          {id:111,name:'Java2',price:100},
+          {id:112,name:'Java3',price:100},
+          {id:113,name:'Java4',price:100},
+
+        ]
+      },
+      computed: {//计算属性 看似是函数，实则当成属性使用
+        totalPrice:function(){
+          let sum = 0;
+          for(let i of this.books){
+            sum=sum+i.price;
+          }
+          return sum;
+        }
+      }//相同的功能也可以用方法实现，但在多次调用时 计算属性只会执行一次，而方法会多次，所以方法的性能差
+    });
+
+  </script>
+
+</body>
+
+</html>

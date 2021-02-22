@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <button @click=btnClick>1</button>
+    <button @click="btnClick()">2</button>
+    <button @click="btnClick1(111,$event)">3</button>
+    <button @click="btnClick1">4</button>
+    <!-- 当需要传参而没有给括号时 就会把点击事件传过去 -->
+  </div>
+
+
+  <script src="../vue.js"></script>
+  <script>
+    //总结 1当定义的方法需要参数，而调用时没有写(),则把事件传过去
+    //      2，当同时需要参数和事件时，使用$event传递事件
+    const app = new Vue({
+      el: '#app',
+      data: {
+        counter: 0
+      },
+      methods: {
+        btnClick(){
+          console.log('btnClick');
+        },
+        btnClick1(name){
+          console.log(name);
+        }
+      }
+    })
+  </script>
+
+</body>
+
+</html>

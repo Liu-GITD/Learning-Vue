@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+
+  <div id="app">
+
+    <!-- .stop修饰符的使用   ==event.stopPropagation()  -->
+    <div @click="divClick">
+      <button @click.stop="btnClick">按钮</button>
+    </div>
+
+
+
+
+
+    <!-- .prevent ==event.preventDefault()-->
+    <!-- 阻止默认事件发生 -->
+    <form action="no">
+      <input type="submit" value="提交" @click.prevent="btnClick">
+    </form>
+
+
+
+    <!-- 箭头某个键盘按钮的点击 -->
+    <!-- 可以把事件传过去就能知道用户按下了哪个按钮了 -->
+    <input type="text" @keyup="keyUp">
+
+  </div>
+  <script src="../vue.js"></script>
+  <script>
+//事件冒泡  直接使用修饰符
+//在以前是拿到event来的 event.stopPropagation()
+
+
+    const app=new Vue({
+      el:'#app',
+      data:{
+        message:'hi'
+      },
+      methods:{
+        btnClick(){
+          console.log('btnClick');
+        },
+        divClick(){
+          console.log('divClick');
+        },
+        keyUp(e){
+          console.log(e);
+        }
+      }
+    })
+  </script>
+</body>
+</html>

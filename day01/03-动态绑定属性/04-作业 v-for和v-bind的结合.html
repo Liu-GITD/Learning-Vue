@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    .active {
+      color: brown;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- 作业需求：点击列表中的哪一项，那一项就变红色 -->
+  <div id="app">
+    <ul>
+      <li v-for="(item,index) in movies" @click="changeColor(index)" v-bind:class="{active:isActive[index]}">{{index}}-{{item}}
+      </li>
+    </ul>
+  </div>
+  <script src="js/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: '你好啊',
+        movies: ['海王', '星际穿越', '大话西游', '盗梦空间'],
+        isActive: [false, false, false, false]
+      },
+      methods: {
+        changeColor: function (index) {
+         // this.isActive[index] = true;
+          Vue.set(this.isActive,index,true);
+          for (let i = 0; i < this.isActive.length; i++) {
+            if (i == index)
+              continue;
+            else {
+              Vue.set(this.isActive,i,false);
+            // this.isActive[i]=false  通过索引修改的是不能响应式的
+            }
+          }
+          console.log(this.isActive);
+        }
+      }
+    })
+  </script>
+
+
+  <!-- 自己的做法
+<div id="app">
+  <ul>
+    <li v-for="item in movies" @click="changeColor" :class={active:isActive}>{{item}}</li>
+  </ul>
+</div>
+<script src="js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el: '#app',
+    data: {
+      message: '你好啊',
+      movies: ['海王', '星际穿越', '大话西游', '盗梦空间'],
+      isActive:false
+    },
+    methods: {
+      changeColor: function () {
+        this.isActive=!this.isActive
+      }
+    }
+  })
+</script> -->
+</body>
+
+</html>

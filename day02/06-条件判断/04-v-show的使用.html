@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+
+  <div id="app">
+    <h2 v-if="flase">1{{message}}</h2>
+    <h2 v-show="true">2{{message}}</h2>
+    <!-- 两者的隐藏是不一样的 -->
+    <!-- v-if隐藏是 不会让元素存在于DOM中 -->
+    <!-- v-show是加一个display:none -->
+    <!-- 在高频率切换场景使用v-show -->
+  </div>
+  <script src="../vue.js"></script>
+  <script>
+
+    //v-if为true时，那个元素才会被渲染出来
+
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: 'hi',
+        isShow: true
+      },
+      methods: {
+        btnClick() {
+          console.log('btnClick');
+        },
+        divClick() {
+          console.log('divClick');
+        },
+        keyUp(e) {
+          console.log(e);
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

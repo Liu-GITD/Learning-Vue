@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<style>
+.aaa{
+  float: left;
+}
+</style>
+<body>
+
+
+  <div id="app">
+    <div class="aaa" v-if="isEmail">
+      <label for="email">用户邮箱：</label><input type="text" placeholder="请输入邮箱" id="email">
+    </div>
+    <div class="aaa" v-else>
+     <label for="user"> 用户账户：</label><input type="text" placeholder="请输入账号" id="user">
+    </div>
+    <button @click="changeBtn">切换登录类型</button>
+  </div>
+  <script src="../vue.js"></script>
+  <script>
+
+    //v-if为true时，那个元素才会被渲染出来
+
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: 'hi',
+        isEmail:true
+      },
+      methods: {
+        changeBtn(){
+          this.isEmail=!this.isEmail
+        }
+      },
+
+    })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+  
+
+</head>
+<body>
+  
+
+<!-- 
+  <table>
+    <th></th>
+    <td>1</td>
+    <td>2</td>
+    <td>3</td>
+    <th>书籍名称</th>
+    <td>算法导论</td>
+    <td>编程珠玑</td>
+    <td>代码大全</td>
+    <th>出版日期</th>
+    <td>2006</td>
+    <td>2006</td>
+    <td>2006</td>
+    <th>价格</th>
+    <td>100</td>
+    <td>100</td>
+    <td>100</td>
+    <th>购买数量</th>
+    <th>操作</th>
+
+  </table> -->
+
+
+<div id="app">
+  <div v-if="sumPrice!=0">
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th>书籍名称</th>
+          <th>出版日期</th>
+          <th>价格</th>
+          <th>购买数量</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+  
+  
+      <tbody>
+        <tr v-for="(item,index) in book" v-if='!isDel'>
+          <!-- <td v-for="value in item">{{value}}</td> -->
+          <td>{{item.id}}</td>
+          <td>{{item.bookName}}</td>
+          <td>{{item.date}}</td>
+          <td>{{item.price|showPrice}}</td>
+          <!-- 使用过滤器来使价格保留两位小数 -->
+          <td><button @click='add(item)'>+</button> {{item.count}} <button @click='sub(item)' :disabled="item.count<=1">-</button></td>
+          <td><button @click='del(index)'>移除</button></td>
+        </tr>
+      </tbody>
+    </table>
+    总价格{{sumPrice|showPrice}}
+  </div>
+ <div v-else>
+  当前购物车为空
+ </div>
+</div>
+
+
+<script src="../vue.js"></script>
+<script src="main.js"></script>
+</body>
+</html>

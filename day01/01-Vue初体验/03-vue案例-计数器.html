@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <h2>当前计数：{{num}}</h2>
+    <button @click='increment'>+</button>
+    <button v-on:click='decrement'>-</button><!-- //这两个是一样的 -->
+  </div>
+  <script src="js/vue.js"></script>
+  <script>
+
+    //总结
+    /*     学习了新的属性：methods,用于在Vue对象中定义方法
+        新的指令：@click，用于监听某个元素的点击事件，方法通常是methods中定义的，等价于v-on:click="" */
+    //@click是v-on:click的语法糖 即简写
+    const app = new Vue({
+      el: '#app',
+      data: {
+        num: 0
+      },
+      methods: {
+        increment() {
+          this.num++
+        },
+        decrement() {
+          this.num--
+        }
+      }
+    })
+
+
+
+
+  </script>
+</body>
+
+</html>

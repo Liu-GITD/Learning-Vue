@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button>111</button>
+  <button>111</button>
+  <button>111</button>
+  <button>111</button>
+  <button>111</button>
+  <button>111</button>
+  <button>111</button>
+
+  <script>
+    //ES5因为if for都没有块级作用域的概念，所以只能借助于function的作用域来解决应用外面变量的问题
+    //没有作用域产生的问题：for的块级
+    //i始终是7
+    var btns = document.getElementsByTagName('button');
+    for(var i=0;i<btns.length;i++){
+      btns[i].addEventListener('click',function(){
+        console.log('第'+i+'个');
+      })
+    }
+
+    //为什么闭包可以解决问题：函数是一个作用域
+    // var btns = document.getElementsByTagName('button');
+    // for(var i=0;i<btns.length;i++){
+    //   var num=i+1;
+    //   console.log(num);
+    //   (function(num){
+    //     btns[i].addEventListener('click',function(){
+    //     console.log('第'+num+'个');
+    //   })
+    //   })(i)
+    // }
+
+    // var btns = document.getElementsByTagName('button');
+    // for(let i=0;i<btns.length;i++){
+    //   btns[i].addEventListener('click',function(){
+    //     console.log('第'+i+'个');
+    //   })
+    // }
+  </script>
+</body>
+</html>
